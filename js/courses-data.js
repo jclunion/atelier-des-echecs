@@ -975,6 +975,275 @@ export const COURSES = [
       },
     ],
   },
+
+  {
+    id: 'cours-catalane',
+    categoryId: 'ouvertures',
+    title: 'L’Ouverture Catalane — Pression sur la Grande Diagonale',
+    subtitle: 'Combinez le contrôle du centre (d4-c4) et le fianchetto dévastateur du Fou en g2.',
+    level: 'Intermédiaire / Avancé',
+    eloRange: '1 200 – 1 900 Elo',
+    durationMinutes: 45,
+    instructor: {
+      name: 'GMI Henri Laurent',
+      title: 'Grand Maître International · Coach fédéral',
+      initials: 'HL',
+    },
+    thumbnail: 'assets/thumb-openings.jpg',
+    hasVideo: true,
+    lessons: [
+      {
+        id: 'catalane-video-1',
+        type: 'video',
+        title: 'Maîtriser la Catalane Fermée et le Fou en g2',
+        duration: '14:20',
+        xp: 50,
+        instructorNote:
+          'L’Ouverture Catalane est l’arme favorite des champions du monde modernes : le Fou en g2 exerce une pression à long terme sur d5 et l’aile Dame noire.',
+        videoConfig: {
+          coverImage: 'assets/thumb-openings.jpg',
+          slotLabel: 'Emplacement Vidéo #07 · Ouverture Catalane',
+          youtube: {
+            videoId: '4UwspANBbHA',
+            title: 'Maîtrisez la Catalane Fermée — GM Axel Delorme',
+            channel: 'iChess Français · GM Axel Delorme',
+            language: 'Français (FR)',
+            url: 'https://www.youtube.com/watch?v=4UwspANBbHA',
+          },
+          chapters: [
+            {
+              time: 0,
+              label: '00:00 · Le Fianchetto Catalan (3.g3)',
+              fen: 'rnbqkb1r/pppp1ppp/4pn2/8/2PP4/6P1/PP2PP1P/RNBQKBNR b KQkq - 0 3',
+              caption: '« Après 1.d4 Cf6 2.c4 e6, 3.g3 prépare l’installation du Fou sur la grande diagonale h1-a8. »',
+              highlights: [{ square: 'g2', type: 'success' }],
+              arrows: [{ from: 'f1', to: 'g2', color: 'emerald' }],
+            },
+            {
+              time: 14,
+              label: '04:30 · Le Fou rayon X sur h1-a8',
+              fen: 'rnbqkb1r/ppp2ppp/4pn2/3p4/2PP4/6P1/PP2PPBP/RNBQK1NR b KQkq - 1 4',
+              caption: '« Le Fou en g2 vise directement le pion d5 et paralyse le développement du Fou c8 noir. »',
+              highlights: [
+                { square: 'g2', type: 'success' },
+                { square: 'd5', type: 'danger' },
+              ],
+              arrows: [{ from: 'g2', to: 'b7', color: 'amber' }],
+            },
+            {
+              time: 28,
+              label: '08:15 · Pression durable après le roque',
+              fen: 'rnbq1rk1/ppp1bppp/4pn2/3p4/2PP4/5NP1/PP2PPBP/RNBQ1RK1 b - - 5 6',
+              caption: '« Même si les Noirs restent solides, le Fou Catalan dicte le rythme jusqu’en finale. »',
+              highlights: [{ square: 'c4', type: 'hint' }],
+              arrows: [{ from: 'g2', to: 'a8', color: 'emerald' }],
+            },
+          ],
+          transcript:
+            'Dans l’Ouverture Catalane, les Blancs refusent la routine pour installer leur Fou Roi en g2. Ce Fou devient le véritable patron de la partie : il pèse sur le centre d5, empêche ...b6 à la légère et rend l’activation du Fou c8 noir très délicate.',
+        },
+      },
+      {
+        id: 'catalane-guide-fianchetto',
+        type: 'guided',
+        title: 'Mettre en place l’Ouverture Catalane',
+        duration: '09 min',
+        xp: 45,
+        startFen: 'rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1',
+        orientation: 'w',
+        intro:
+          'Découvrez l’ordre de coups exact pour installer le dispositif Catalan face à la structure classique ...e6 / ...d5.',
+        steps: [
+          {
+            move: 'd2d4',
+            explanation: '1.d4 : Occupation du centre par le pion Dame.',
+          },
+          {
+            move: 'g8f6',
+            explanation: '1...Cf6 : Les Noirs contrôlent e4 et retardent leur choix central.',
+          },
+          {
+            move: 'c2c4',
+            explanation: '2.c4 : On gagne de l’espace à l’aile Dame et on contrôle d5.',
+          },
+          {
+            move: 'e7e6',
+            explanation: '2...e6 : Prépare ...d5 ou ...Fb4+.',
+          },
+          {
+            move: 'g2g3',
+            explanation: '3.g3 ! Le coup signature de la Catalane : on libère la case g2 pour le Fou.',
+            highlights: [{ square: 'g2', type: 'success' }],
+            arrows: [{ from: 'f1', to: 'g2', color: 'emerald' }],
+          },
+          {
+            move: 'd7d5',
+            explanation: '3...d5 : Les Noirs installent leur pion central.',
+          },
+          {
+            move: 'f1g2',
+            explanation:
+              '4.Fg2 : Le Fou Catalan rayonne désormais sur toute la grande diagonale h1-a8.',
+            arrows: [{ from: 'g2', to: 'a8', color: 'amber' }],
+          },
+        ],
+      },
+      {
+        id: 'catalane-exo-diagonale',
+        type: 'exercise',
+        title: 'Exploiter le rayon X du Fou Catalan',
+        duration: '12 min',
+        xp: 75,
+        startFen: 'r1b2rk1/p2qbppp/4pn2/2p5/8/2N1PNP1/PPQ2PBP/R4RK1 w - - 0 1',
+        orientation: 'w',
+        prompt:
+          'La grande diagonale vient de s’ouvrir ! Trouvez la découverte tactique qui attaque la Dame noire tout en libérant votre Fou Catalan sur la Tour a8.',
+        hint: 'Déplacez le Cavalier f3 vers une case centrale d’où il attaque directement la Dame d7.',
+        solution: [
+          {
+            playerMove: 'f3e5',
+            replyMove: 'd7c7',
+            feedback:
+              'Ce5 ! Attaque à la découverte : le Cavalier attaque la Dame et le Fou g2 vise désormais la Tour a8.',
+          },
+          {
+            playerMove: 'g2a8',
+            replyMove: null,
+            successMessage:
+              'Superbe (Fxa8) ! Le Fou Catalan récompense votre placement sur la grande diagonale en capturant la Tour nette.',
+          },
+        ],
+      },
+    ],
+  },
+
+  {
+    id: 'cours-caro-kann',
+    categoryId: 'ouvertures',
+    title: 'La Défense Caro-Kann — Solidité & Contre-attaque',
+    subtitle: 'Une défense fiable contre 1.e4 qui libère le Fou de cases blanches dès l’ouverture.',
+    level: 'Débutant / Intermédiaire',
+    eloRange: '900 – 1 600 Elo',
+    durationMinutes: 40,
+    instructor: {
+      name: 'MI Claire Moreau',
+      title: 'Maître Internationale · Spécialiste des ouvertures',
+      initials: 'CM',
+    },
+    thumbnail: 'assets/thumb-openings.jpg',
+    hasVideo: true,
+    lessons: [
+      {
+        id: 'carokann-video-1',
+        type: 'video',
+        title: 'Introduction à la Défense Caro-Kann : Idées & Plans',
+        duration: '11:45',
+        xp: 50,
+        instructorNote:
+          'Contrairement à la Défense Française (1...e6), la Caro-Kann (1...c6) prépare ...d5 sans enfermer votre Fou c8.',
+        videoConfig: {
+          coverImage: 'assets/thumb-openings.jpg',
+          slotLabel: 'Emplacement Vidéo #08 · Défense Caro-Kann',
+          youtube: {
+            videoId: 'qKssjoD7-YE',
+            title: 'Introduction à la Défense Caro-Kann : Idées et Plans Cachés',
+            channel: 'Progresser aux échecs · Marc Quenehen',
+            language: 'Français (FR)',
+            url: 'https://www.youtube.com/watch?v=qKssjoD7-YE',
+          },
+          chapters: [
+            {
+              time: 0,
+              label: '00:00 · 1.e4 c6 — Préparer ...d5',
+              fen: 'rnbqkbnr/pppppppp/8/8/4P3/8/PPPP1PPP/RNBQKBNR b KQkq - 0 1',
+              caption: '« 1...c6 prépare la poussée centrale ...d5 tout en laissant le chemin libre au Fou c8. »',
+              highlights: [{ square: 'c6', type: 'success' }],
+              arrows: [{ from: 'd7', to: 'd5', color: 'emerald' }],
+            },
+            {
+              time: 14,
+              label: '03:40 · Libérer le Fou c8 en f5',
+              fen: 'rnbqkbnr/pp1ppppp/2p5/3pP3/3P4/8/PPP2PPP/RNBQKBNR b KQkq - 0 3',
+              caption: '« Face à la Variante d’Avance (3.e5), sortez tout de suite votre Fou en f5 avant de jouer ...e6 ! »',
+              highlights: [{ square: 'f5', type: 'success' }],
+              arrows: [{ from: 'c8', to: 'f5', color: 'emerald' }],
+            },
+            {
+              time: 26,
+              label: '07:10 · Saper la chaîne avec ...c5',
+              fen: 'rn1qkbnr/pp3ppp/2p1p3/3pPb2/3P4/5N2/PPP1BPPP/RNBQ1RK1 b kq - 1 5',
+              caption: '« Une fois le Fou sorti et ...e6 joué, frappez la base du centre blanc avec ...c5. »',
+              highlights: [{ square: 'd4', type: 'danger' }],
+              arrows: [{ from: 'c6', to: 'c5', color: 'amber' }],
+            },
+          ],
+          transcript:
+            'La Défense Caro-Kann (1.e4 c6) est prisée à tous les niveaux pour sa structure de pions saine et ses finales favorables. Sa règle d’or face à 3.e5 est de développer le Fou c8 à l’extérieur de la chaîne de pions (3...Ff5) avant de verrouiller avec ...e6.',
+        },
+      },
+      {
+        id: 'carokann-guide-avance',
+        type: 'guided',
+        title: 'La Variante d’Avance : sortir le Fou avant ...e6',
+        duration: '08 min',
+        xp: 45,
+        startFen: 'rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1',
+        orientation: 'b',
+        intro:
+          'Suivez le plan fondamental des Noirs dans la Caro-Kann contre la Variante d’Avance (3.e5).',
+        steps: [
+          {
+            move: 'e2e4',
+            explanation: '1.e4 : Ouverture du pion Roi.',
+          },
+          {
+            move: 'c7c6',
+            explanation: '1...c6 : La Défense Caro-Kann, qui prépare 2...d5 sans bloquer le Fou c8.',
+            arrows: [{ from: 'c8', to: 'f5', color: 'amber' }],
+          },
+          {
+            move: 'd2d4',
+            explanation: '2.d4 : Les Blancs occupent pleinement le centre.',
+          },
+          {
+            move: 'd7d5',
+            explanation: '2...d5 : Contre-attaque immédiate sur e4, soutenue par le pion c6.',
+          },
+          {
+            move: 'e4e5',
+            explanation: '3.e5 : Variante d’Avance. Les Blancs gagnent de l’espace mais fixent leur chaîne de pions.',
+          },
+          {
+            move: 'c8f5',
+            explanation:
+              '3...Ff5 ! Le coup libérateur de la Caro-Kann : le Fou de cases blanches sort sur une diagonale active avant ...e6.',
+            highlights: [{ square: 'f5', type: 'success' }],
+            arrows: [{ from: 'c8', to: 'f5', color: 'emerald' }],
+          },
+        ],
+      },
+      {
+        id: 'carokann-exo-c5',
+        type: 'exercise',
+        title: 'Saper le centre blanc avec ...c5',
+        duration: '10 min',
+        xp: 65,
+        startFen: 'rn1qkbnr/pp3ppp/2p1p3/3pPb2/3P4/5N2/PPP1BPPP/RNBQ1RK1 b kq - 1 5',
+        orientation: 'b',
+        prompt:
+          'Trait aux Noirs. Votre Fou est activé en f5 et votre structure est solide. Jouez la rupture thématique qui attaque la base d4 de la chaîne blanche !',
+        hint: 'Poussez le pion c6 vers l’avant pour défier le pion d4.',
+        solution: [
+          {
+            playerMove: 'c6c5',
+            replyMove: null,
+            successMessage:
+              'Parfait (...c5) ! Vous attaquez immédiatement la base de la chaîne de pions blanche et libérez la case c6 pour votre Cavalier.',
+          },
+        ],
+      },
+    ],
+  },
 ];
 
 export const DAILY_CHALLENGE = {

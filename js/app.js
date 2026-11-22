@@ -230,13 +230,15 @@ class ChessAcademyApp {
               <span class="panel-mini-title">Emplacements Leçons Vidéo · YouTube FR</span>
               <h2 class="section-title-sm">Leçons vidéo en français &amp; chapitres synchronisés</h2>
             </div>
-            <span class="meta-chip">6 vidéos YouTube FR</span>
+            <span class="meta-chip">${COURSES.flatMap((c) => c.lessons).filter((l) => l.type === 'video').length} vidéos YouTube FR</span>
           </div>
           <p class="video-showcase-desc">
             Chaque parcours débute par un emplacement vidéo intégrant une sélection YouTube francophone, des chapitres reliés à l’échiquier et la possibilité de coller votre propre lien YouTube FR ou fichier MP4.
           </p>
           <div class="video-slots-preview">
-            ${COURSES.slice(0, 3)
+            ${['cours-catalane', 'cours-caro-kann', 'cours-italienne']
+              .map((cid) => COURSES.find((c) => c.id === cid))
+              .filter(Boolean)
               .map((c) => {
                 const vid = c.lessons.find((l) => l.type === 'video');
                 const done = appState.isLessonCompleted(vid.id);
