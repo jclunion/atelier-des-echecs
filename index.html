@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>L’Atelier des Échecs — Plateforme d’apprentissage interactive en français</title>
+  <meta
+    name="description"
+    content="Plateforme francophone d'apprentissage des échecs : cours interactifs sur échiquier, leçons vidéo chapitrées, catégories de cours, suivi de progression et tableaux de bord pour les apprenants."
+  />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <button type="button" class="brand-link" data-nav="accueil" aria-label="Retour à l'accueil">
+        <span class="brand-emblem" aria-hidden="true">
+          <svg viewBox="0 0 36 36" width="28" height="28" fill="none">
+            <rect width="36" height="36" rx="8" fill="#1D5C3A" />
+            <path
+              d="M21 9c4.5.7 7.5 4.2 7.2 14.5H12.5c0-4.6 4.7-3.8 3.9-10.5l-2.6 1.5c-.9.5-2.1-.1-2.3-1.1-.3-1.2 2.4-5.2 2.4-5.2s1-1 1.2-1.9l.8-.8 1.5 1.1L19.2 7l1.2 1.2.6.8z"
+              fill="#FAF8F3"
+            />
+            <rect x="10.5" y="25.5" width="16.5" height="2.6" rx="1.2" fill="#D49B38" />
+          </svg>
+        </span>
+        <span class="brand-text">
+          <strong>L’Atelier des Échecs</strong>
+          <span>Académie interactive</span>
+        </span>
+      </button>
+
+      <nav class="main-nav" aria-label="Navigation principale">
+        <button type="button" class="nav-tab active" data-nav="accueil" id="nav-accueil">Accueil</button>
+        <button type="button" class="nav-tab" data-nav="catalogue" id="nav-catalogue">Catalogue des cours</button>
+        <button type="button" class="nav-tab" data-nav="lecon" id="nav-lecon">Salle de cours</button>
+        <button type="button" class="nav-tab" data-nav="tableau-de-bord" id="nav-dashboard">Tableau de bord</button>
+      </nav>
+
+      <button
+        type="button"
+        class="learner-pill"
+        id="header-learner-pill"
+        data-nav="tableau-de-bord"
+        title="Ouvrir votre tableau de bord"
+      ></button>
+    </div>
+  </header>
+
+  <main id="app-main" class="app-main"></main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <strong>L’Atelier des Échecs</strong>
+        <span>Plateforme d’apprentissage interactive dédiée à la pratique des échecs.</span>
+      </div>
+      <div class="footer-links">
+        <button type="button" class="btn-link" data-nav="accueil">Accueil</button>
+        <button type="button" class="btn-link" data-nav="catalogue">Cours &amp; Catégories</button>
+        <button type="button" class="btn-link" data-nav="lecon">Salle interactive</button>
+        <button type="button" class="btn-link" data-nav="tableau-de-bord">Tableau de bord</button>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
