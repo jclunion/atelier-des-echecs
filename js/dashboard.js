@@ -11,10 +11,11 @@ import { CATEGORIES, COURSES } from './courses-data.js';
 import { appState } from './state.js';
 
 export class DashboardView {
-  constructor(container, onOpenLesson, onNavigate) {
+  constructor(container, onOpenLesson, onNavigate, onOpenAuth) {
     this.container = container;
     this.onOpenLesson = onOpenLesson;
     this.onNavigate = onNavigate;
+    this.onOpenAuth = onOpenAuth;
   }
 
   renderRadarSvg(categoryStats) {
@@ -92,6 +93,11 @@ export class DashboardView {
   }
 
   render() {
+    if (!appState.isAuthenticated) {
+      this.renderGuestGate();
+      return;
+    }
+
     const p = appState.profile;
     const stats = appState.getOverallStats();
     const levelInfo = appState.getLevelInfo();
@@ -114,7 +120,7 @@ export class DashboardView {
           <div>
             <div class="dash-kicker">Tableau de bord de l’apprenant</div>
             <h1 class="dash-name">${p.name}</h1>
-            <p class="dash-subtitle">${p.roleLabel} · Niveau ${levelInfo.current.level} — <strong>${levelInfo.current.title}</strong></p>
+            <p class="dash-subtitle">${p.email ? p.email + ' · ' : ''}${p.roleLabel} · Niveau ${levelInfo.current.level} — <strong>${levelInfo.current.title}</strong></p>
             <div class="xp-bar-row">
               <div class="xp-track">
                 <div class="xp-fill" style="width: ${levelInfo.progressPct}%"></div>
@@ -129,15 +135,11 @@ export class DashboardView {
         </div>
 
         <div class="dash-profile-controls">
-          <label class="profile-switch-label">
-            <span>Profil actif</span>
-            <select id="dash-profile-select" class="theme-select">
-              <option value="camille" ${p.id === 'camille' ? 'selected' : ''}>Camille Dupont (Intermédiaire)</option>
-              <option value="nouveau" ${p.id === 'nouveau' ? 'selected' : ''}>Lucas Bernard (Débutant · 0 XP)</option>
-            </select>
-          </label>
           <button type="button" class="btn btn-secondary btn-sm" id="dash-reset-btn">
-            Réinitialiser ce profil
+            Réinitialiser ma progression
+          </button>
+          <button type="button" class="btn btn-secondary btn-sm" id="dash-logout-btn">
+            Se déconnecter
           </button>
         </div>
       </section>
@@ -345,6 +347,49 @@ export class DashboardView {
     this.bindEvents(resume);
   }
 
+  renderGuestGate() {
+    const guestDone = appState.profile.completedLessons.length;
+    this.container.innerHTML = `
+      <section class="guest-gate card">
+        <div class="guest-gate-badge">Espace Apprenant</div>
+        <h1 class="guest-gate-title">Suivez votre progression et vos parties</h1>
+        <p class="guest-gate-desc">
+          Connectez-vous ou créez gratuitement votre compte pour enregistrer vos XP, votre Elo d’entraînement, vos notes sur les leçons vidéo, vos séries quotidiennes et vos trophées.
+        </p>
+        ${
+          guestDone > 0
+            ? `<div class="auth-info-note">Vous avez déjà complété <strong>${guestDone} leçon(s)</strong> durant cette visite : créez un compte pour les sauvegarder durablement !</div>`
+            : ''
+        }
+        <div class="guest-gate-actions">
+          <button type="button" class="btn btn-primary btn-lg" id="gate-register-btn">
+            Créer un compte gratuit →
+          </button>
+          <button type="button" class="btn btn-secondary btn-lg" id="gate-login-btn">
+            Se connecter
+          </button>
+        </div>
+        <div class="guest-gate-demo">
+          <span>Ou découvrez immédiatement un tableau de bord actif :</span>
+          <button type="button" class="btn-link" id="gate-demo-camille">
+            Essayer avec le compte démo Camille Dupont (1 245 Elo) →
+          </button>
+        </div>
+      </section>
+    `;
+
+    this.container.querySelector('#gate-register-btn')?.addEventListener('click', () => {
+      if (this.onOpenAuth) this.onOpenAuth('register');
+    });
+    this.container.querySelector('#gate-login-btn')?.addEventListener('click', () => {
+      if (this.onOpenAuth) this.onOpenAuth('login');
+    });
+    this.container.querySelector('#gate-demo-camille')?.addEventListener('click', () => {
+      appState.loginDemo('camille');
+      this.render();
+    });
+  }
+
   bindEvents(resume) {
     this.container.querySelector('#dash-resume-btn')?.addEventListener('click', () => {
       this.onOpenLesson(resume.course.id, resume.lesson.id);
@@ -354,8 +399,8 @@ export class DashboardView {
       this.onNavigate('catalogue');
     });
 
-    this.container.querySelector('#dash-profile-select')?.addEventListener('change', (e) => {
-      appState.switchProfile(e.target.value);
+    this.container.querySelector('#dash-logout-btn')?.addEventListener('click', () => {
+      appState.logout();
       this.render();
     });
 

@@ -11,6 +11,7 @@ import { CATEGORIES, COURSES, DAILY_CHALLENGE } from './courses-data.js';
 import { appState } from './state.js';
 import { CoursePlayer } from './course-player.js';
 import { DashboardView } from './dashboard.js';
+import { AuthModal } from './auth-modal.js';
 
 class ChessAcademyApp {
   constructor() {
@@ -23,11 +24,16 @@ class ChessAcademyApp {
     };
 
     this.mainEl = document.getElementById('app-main');
+    this.authModal = new AuthModal(document.getElementById('auth-modal-root'), () => {
+      this.updateHeaderAuth();
+      this.navigate(this.currentView);
+    });
     this.coursePlayer = new CoursePlayer(this.mainEl, (view) => this.navigate(view));
     this.dashboardView = new DashboardView(
       this.mainEl,
       (courseId, lessonId) => this.openCourse(courseId, lessonId),
-      (view) => this.navigate(view)
+      (view) => this.navigate(view),
+      (mode) => this.authModal.open(mode)
     );
 
     this.dailyEngine = new ChessEngine(DAILY_CHALLENGE.fen);
@@ -36,9 +42,9 @@ class ChessAcademyApp {
 
     soundFX.enabled = appState.soundEnabled;
 
-    appState.subscribe(() => this.updateHeaderPill());
+    appState.subscribe(() => this.updateHeaderAuth());
     this.bindGlobalNav();
-    this.updateHeaderPill();
+    this.updateHeaderAuth();
     this.navigate('accueil');
   }
 
@@ -50,17 +56,52 @@ class ChessAcademyApp {
     });
   }
 
-  updateHeaderPill() {
-    const p = appState.profile;
-    const pill = document.getElementById('header-learner-pill');
-    if (!pill) return;
-    pill.innerHTML = `
-      <span class="pill-streak" title="Série quotidienne">${p.streakDays} j</span>
-      <span class="pill-xp">${p.xp} XP</span>
-      <span class="pill-divider"></span>
-      <span class="pill-avatar">${p.initials}</span>
-      <span class="pill-name">${p.name.split(' ')[0]} · ${p.elo} Elo</span>
-    `;
+  updateHeaderAuth() {
+    const area = document.getElementById('header-auth-area');
+    if (!area) return;
+
+    if (appState.isAuthenticated) {
+      const p = appState.profile;
+      area.innerHTML = `
+        <button
+          type="button"
+          class="learner-pill"
+          id="header-learner-pill"
+          title="Ouvrir votre tableau de bord"
+        >
+          <span class="pill-streak" title="Série quotidienne">${p.streakDays} j</span>
+          <span class="pill-xp">${p.xp} XP</span>
+          <span class="pill-divider"></span>
+          <span class="pill-avatar">${p.initials}</span>
+          <span class="pill-name">${p.name.split(' ')[0]} · ${p.elo} Elo</span>
+        </button>
+        <button type="button" class="btn btn-secondary btn-xs" id="header-logout-btn" title="Se déconnecter">
+          Déconnexion
+        </button>
+      `;
+      area.querySelector('#header-learner-pill')?.addEventListener('click', () => {
+        this.navigate('tableau-de-bord');
+      });
+      area.querySelector('#header-logout-btn')?.addEventListener('click', () => {
+        appState.logout();
+        this.navigate(this.currentView);
+      });
+    } else {
+      area.innerHTML = `
+        <button type="button" class="btn btn-secondary btn-sm" id="header-login-btn">
+          Se connecter
+        </button>
+        <button type="button" class="btn btn-primary btn-sm" id="header-register-btn">
+          S’inscrire
+        </button>
+      `;
+      area.querySelector('#header-login-btn')?.addEventListener('click', () => {
+        this.authModal.open('login');
+      });
+      area.querySelector('#header-register-btn')?.addEventListener('click', () => {
+        this.authModal.open('register');
+      });
+    }
   }
 
   navigate(view, opts = {}) {
