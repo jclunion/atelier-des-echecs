@@ -983,7 +983,7 @@ export const COURSES = [
     subtitle: 'Combinez le contrôle du centre (d4-c4) et le fianchetto dévastateur du Fou en g2.',
     level: 'Intermédiaire / Avancé',
     eloRange: '1 200 – 1 900 Elo',
-    durationMinutes: 45,
+    durationMinutes: 60,
     instructor: {
       name: 'GMI Henri Laurent',
       title: 'Grand Maître International · Coach fédéral',
@@ -993,16 +993,70 @@ export const COURSES = [
     hasVideo: true,
     lessons: [
       {
+        id: 'catalane-video-2',
+        type: 'video',
+        title: 'La Catalane Ouverte (4...dxc4) — La ligne la plus jouée',
+        duration: '13:30',
+        xp: 55,
+        instructorNote:
+          'D’un point de vue statistique, 4...dxc4 (la Catalane Ouverte) est de loin la réponse la plus fréquente en tournoi : les Noirs cèdent le centre pour contester l’aile Dame, tandis que les Blancs récupèrent le pion avec Dc2 et a4.',
+        videoConfig: {
+          coverImage: 'assets/thumb-openings.jpg',
+          slotLabel: 'Emplacement Vidéo #07 · Catalane Ouverte',
+          youtube: {
+            videoId: 'OfyKlTE4Uu0',
+            title: 'Progressez dans la partie catalane ! (Catalane Ouverte · 4...dxc4)',
+            channel: 'Progresser aux échecs · Marc Quenehen',
+            language: 'Français (FR)',
+            url: 'https://www.youtube.com/watch?v=OfyKlTE4Uu0',
+          },
+          chapters: [
+            {
+              time: 0,
+              label: '00:00 · 4...dxc4 — Entrer dans la Catalane Ouverte',
+              fen: 'rnbqkb1r/ppp2ppp/4pn2/8/2pP4/6P1/PP2PPBP/RNBQK1NR w KQkq - 0 5',
+              caption: '« Avec 4...dxc4, les Noirs prennent le pion c4 : c’est statistiquement la variante principale de la Catalane. »',
+              highlights: [{ square: 'c4', type: 'danger' }],
+              arrows: [{ from: 'g2', to: 'b7', color: 'emerald' }],
+            },
+            {
+              time: 14,
+              label: '04:20 · 5.Cf3 a6 6.O-O b5? / 7.Dc2 — Reprendre c4',
+              fen: 'rnbqkb1r/1pp2ppp/p3pn2/8/2pP4/5NP1/PPQ1PPBP/RNB2RK1 b kq - 1 7',
+              caption: '« Les Blancs préparent la reprise en c4 avec Dc2 et a4, tout en gardant la grande diagonale ouverte. »',
+              highlights: [
+                { square: 'c2', type: 'success' },
+                { square: 'c4', type: 'hint' },
+              ],
+              arrows: [{ from: 'c2', to: 'c4', color: 'emerald' }],
+            },
+            {
+              time: 28,
+              label: '08:10 · 8.a4 Fd7 9.Dxc4 Fc6 — Pression maximale',
+              fen: 'rn1qkb1r/1p3ppp/p1b1pn2/8/P1QP4/5NP1/1P2PPBP/RNB2RK1 w kq - 1 10',
+              caption: '« Une fois c4 repris par la Dame après a4, les Blancs contrôlent le centre et pressent sur la colonne c. »',
+              highlights: [{ square: 'c4', type: 'success' }],
+              arrows: [
+                { from: 'g2', to: 'c6', color: 'amber' },
+                { from: 'c4', to: 'c6', color: 'emerald' },
+              ],
+            },
+          ],
+          transcript:
+            'Statistiquement, la Catalane Ouverte (1.d4 Cf6 2.c4 e6 3.g3 d5 4.Fg2 dxc4) est la ligne la plus pratiquée à haut niveau. Les Blancs ne cherchent pas à récupérer immédiatement le pion c4 à tout prix : ils développent 5.Cf3, roquent, puis utilisent a4 et Dc2 pour briser le soutien noir à l’aile Dame tout en exploitant le Fou g2.',
+        },
+      },
+      {
         id: 'catalane-video-1',
         type: 'video',
         title: 'Maîtriser la Catalane Fermée et le Fou en g2',
         duration: '14:20',
         xp: 50,
         instructorNote:
-          'L’Ouverture Catalane est l’arme favorite des champions du monde modernes : le Fou en g2 exerce une pression à long terme sur d5 et l’aile Dame noire.',
+          'Complément indispensable : lorsque les Noirs refusent dxc4 et maintiennent d5/c6, le Fou en g2 exerce une pression durable sur la structure fermée.',
         videoConfig: {
           coverImage: 'assets/thumb-openings.jpg',
-          slotLabel: 'Emplacement Vidéo #07 · Ouverture Catalane',
+          slotLabel: 'Emplacement Vidéo #08 · Catalane Fermée',
           youtube: {
             videoId: '4UwspANBbHA',
             title: 'Maîtrisez la Catalane Fermée — GM Axel Delorme',
@@ -1040,7 +1094,7 @@ export const COURSES = [
             },
           ],
           transcript:
-            'Dans l’Ouverture Catalane, les Blancs refusent la routine pour installer leur Fou Roi en g2. Ce Fou devient le véritable patron de la partie : il pèse sur le centre d5, empêche ...b6 à la légère et rend l’activation du Fou c8 noir très délicate.',
+            'Dans la Catalane Fermée, les Blancs refusent la routine pour installer leur Fou Roi en g2. Ce Fou devient le véritable patron de la partie : il pèse sur le centre d5, empêche ...b6 à la légère et rend l’activation du Fou c8 noir très délicate.',
         },
       },
       {
@@ -1143,7 +1197,7 @@ export const COURSES = [
           'Contrairement à la Défense Française (1...e6), la Caro-Kann (1...c6) prépare ...d5 sans enfermer votre Fou c8.',
         videoConfig: {
           coverImage: 'assets/thumb-openings.jpg',
-          slotLabel: 'Emplacement Vidéo #08 · Défense Caro-Kann',
+          slotLabel: 'Emplacement Vidéo #09 · Défense Caro-Kann',
           youtube: {
             videoId: 'qKssjoD7-YE',
             title: 'Introduction à la Défense Caro-Kann : Idées et Plans Cachés',

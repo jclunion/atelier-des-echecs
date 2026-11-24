@@ -498,7 +498,7 @@ class ChessAcademyApp {
                       <img src="${course.thumbnail}" alt="${course.title}" class="course-thumb" />
                       <div class="course-thumb-badges">
                         <span class="cat-tag" style="--cat-color: ${cat.color}">${cat.shortName}</span>
-                        <span class="video-badge-pill">▶ ${videoCount} leçon vidéo</span>
+                        <span class="video-badge-pill">▶ ${videoCount} leçon${videoCount > 1 ? 's' : ''} vidéo</span>
                       </div>
                     </div>
                     <div class="course-card-body">
